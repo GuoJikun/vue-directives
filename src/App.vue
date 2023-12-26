@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { vResize } from './directives/index'
+import { vResize, vFocus } from './directives/index'
 const callback = (e: any) => {
   console.log(e)
 }
@@ -8,34 +8,19 @@ const callback = (e: any) => {
 <template>
   <div>
     <textarea v-resize.resizeObserve="callback"></textarea>
+    <input type="text" v-focus />
   </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
+input {
+  line-height: 32px;
+  outline: none;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  transition: border-color 0.2s ease-in-out;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+input:focus {
+  border: 1px solid red;
 }
 </style>
